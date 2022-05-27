@@ -1,4 +1,5 @@
-const mean = document.querySelector("#asd");
+const mean = document.querySelector("#mean");
+const median = document.querySelector("#median");
 
 let data = {};
 
@@ -16,5 +17,17 @@ mean.addEventListener("click", () => {
     sum += data[property];
   }
 
-  console.log(`mean = ${sum / objectLength}`);
+  console.log(sum / objectLength);
+});
+
+const computeMedian = (arr) => {
+  let middle = Math.floor(arr.length / 2);
+  arr = [...arr].sort((a, b) => a - b);
+  return arr.length % 2 !== 0 ? arr[middle] : (arr[middle - 1] + arr[middle]) / 2;
+};
+
+median.addEventListener("click", () => {
+  const sortedData = Object.values(data);
+
+  console.log(computeMedian(sortedData));
 });
